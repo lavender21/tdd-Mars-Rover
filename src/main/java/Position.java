@@ -1,3 +1,6 @@
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class Position {
     private int x;
     private int y;
@@ -33,40 +36,18 @@ public class Position {
     }
 
     public void turnLeft() {
-        switch (direction) {
-            case Direction.SOUTH:
-                direction = Direction.EAST;
-                break;
-            case Direction.NORTH:
-                direction = Direction.WEST;
-                break;
-            case Direction.EAST:
-                direction = Direction.NORTH;
-                break;
-            case Direction.WEST:
-                direction = Direction.SOUTH;
-                break;
-            default:
-                break;
-        }
+        Integer key = Direction.directionMaps.entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)).get(direction);
+        Integer directionKey =   key - 1 == 0 ? Direction.directionMaps.size() : key - 1;
+        direction = Direction.directionMaps.get(directionKey);
     }
 
     public void turnRight() {
-        switch (direction) {
-            case Direction.NORTH:
-                direction = Direction.EAST;
-                break;
-            case Direction.SOUTH:
-                direction = Direction.WEST;
-                break;
-            case Direction.EAST:
-                direction = Direction.SOUTH;
-                break;
-            case Direction.WEST:
-                direction = Direction.NORTH;
-                break;
-            default:
-                break;
-        }
+        Integer key = Direction.directionMaps.entrySet()
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)).get(direction);
+        Integer directionKey =   key + 1 == Direction.directionMaps.size() + 1 ? 1 : key + 1;
+        direction = Direction.directionMaps.get(directionKey);
     }
 }
