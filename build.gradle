@@ -28,4 +28,8 @@ dependencies {
     testCompile "org.assertj:assertj-core:3.11.0"
     testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    annotationProcessor(
+            "org.projectlombok:lombok:1.18.10"
+    )
 }
