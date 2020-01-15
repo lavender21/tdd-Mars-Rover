@@ -9,4 +9,8 @@ public class MarsRover {
     public String printPosition() {
         return position.toString();
     }
+
+    public void sendOrder(String order) {
+        return;
+    }
 }
