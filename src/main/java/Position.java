@@ -18,6 +18,8 @@ public class Position {
             this.y--;
         } else if(direction == "E"){
             this.x++;
+        } else if(direction == "W") {
+            this.x--;
         } else {
             this.y++;
         }
