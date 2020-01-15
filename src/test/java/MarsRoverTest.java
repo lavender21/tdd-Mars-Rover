@@ -11,6 +11,9 @@ tasks
     Position(1,1,W)，"M" -> (0,1) W
 4.输入指令左转L，获取结束位置W
     Position(1,1,N)，"L" -> (1,1) W
+    Position(1,1,S)，"L" -> (1,1) E
+    Position(1,1,E)，"L" -> (1,1) N
+    Position(1,1,W)，"L" -> (1,1) S
 5.输入指令右转转R，获取结束位置E
     Position(1,1,N)，"R" -> (1,1) E
 6.输入指令前进,左转，获取结束位置
@@ -62,6 +65,12 @@ public class MarsRoverTest {
     public void return_final_position_when_move_forward_to_West() {
         Position initPosition = new Position(1,1,"W");
         assertMarsRoverPosition("(0,1) W", "M", initPosition);
+    }
+
+    @Test
+    public void return_final_position_when_move_left_from_North() {
+        Position initPosition = new Position(1,1,"N");
+        assertMarsRoverPosition("(1,1) W", "L", initPosition);
     }
 
     private void assertMarsRoverPosition(String expect,String order, Position initPosition) {

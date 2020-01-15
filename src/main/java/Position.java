@@ -31,4 +31,8 @@ public class Position {
                 break;
         }
     }
+
+    public void turnLeft() {
+        direction = "W";
+    }
 }
