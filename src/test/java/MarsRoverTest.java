@@ -52,6 +52,12 @@ public class MarsRoverTest {
         assertMarsRoverPosition("(1,0) S", "M", initPosition);
     }
 
+    @Test
+    public void return_final_position_when_move_forward_to_East() {
+        Position initPosition = new Position(1,1,"E");
+        assertMarsRoverPosition("(2,1) E", "M", initPosition);
+    }
+
     private void assertMarsRoverPosition(String expect,String order, Position initPosition) {
         MarsRover marsRover = new MarsRover(initPosition);
         marsRover.sendOrder(order);

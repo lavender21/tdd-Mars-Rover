@@ -16,6 +16,8 @@ public class Position {
     public void forward() {
         if (direction == "S") {
             this.y--;
+        } else if(direction == "E"){
+            this.x++;
         } else {
             this.y++;
         }
