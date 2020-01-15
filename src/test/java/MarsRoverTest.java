@@ -36,16 +36,23 @@ public class MarsRoverTest {
 
     @Test
     public void return_init_position_when_move_order_is_empty() {
-        assertMarsRoverPosition("(1,1) N", "");
+        Position initPosition = new Position(1,1,"N");
+        assertMarsRoverPosition("(1,1) N", "", initPosition);
     }
 
     @Test
     public void return_final_position_when_move_forward_to_North() {
-        assertMarsRoverPosition("(1,2) N", "M");
+        Position initPosition = new Position(1,1,"N");
+        assertMarsRoverPosition("(1,2) N", "M", initPosition);
     }
 
-    private void assertMarsRoverPosition(String expect,String order) {
-        Position initPosition = new Position(1,1,"N");
+    @Test
+    public void return_final_position_when_move_forward_to_South() {
+        Position initPosition = new Position(1,1,"S");
+        assertMarsRoverPosition("(1,0) S", "M", initPosition);
+    }
+
+    private void assertMarsRoverPosition(String expect,String order, Position initPosition) {
         MarsRover marsRover = new MarsRover(initPosition);
         marsRover.sendOrder(order);
 

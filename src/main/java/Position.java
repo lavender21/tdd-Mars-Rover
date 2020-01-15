@@ -14,6 +14,10 @@ public class Position {
     }
 
     public void forward() {
-        this.y++;
+        if (direction == "S") {
+            this.y--;
+        } else {
+            this.y++;
+        }
     }
 }
