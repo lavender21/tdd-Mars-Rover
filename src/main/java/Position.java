@@ -42,6 +42,10 @@ public class Position {
                 break;
             case Direction.EAST:
                 direction = Direction.NORTH;
+                break;
+            case Direction.WEST:
+                direction = Direction.SOUTH;
+                break;
             default:
                 break;
         }
