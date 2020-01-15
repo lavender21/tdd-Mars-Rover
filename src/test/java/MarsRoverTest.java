@@ -1,21 +1,6 @@
 /*
 tasks
-1.初始化位置，不做任何移动，获取当前位置
-    Position(1,1,N) -> "(1,1) N"
-2.输入空指令,获取结束位置
-    Position(1,1,N)，"" -> (1,1) N
-3.输入指令前进M,获取结束位置
-    Position(1,1,N)，"M" -> (1,2) N
-    Position(1,1,S)，"M" -> (1,0) S
-    Position(1,1,E)，"M" -> (2,1) E
-    Position(1,1,W)，"M" -> (0,1) W
-4.输入指令左转L，获取结束位置W
-    Position(1,1,N)，"L" -> (1,1) W
-    Position(1,1,S)，"L" -> (1,1) E
-    Position(1,1,E)，"L" -> (1,1) N
-    Position(1,1,W)，"L" -> (1,1) S
-5.输入指令右转转R，获取结束位置E
-    Position(1,1,N)，"R" -> (1,1) E
+
 6.输入指令前进,左转，获取结束位置
     Position(1,1,N)，"M L" -> (1,2) W
 7.输入指令前进,右转，获取结束位置
@@ -28,7 +13,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class MarsRoverTest {
-
+    /*
+        1.初始化位置，不做任何移动，获取当前位置
+            Position(1,1,N) -> "(1,1) N"
+     */
     @Test
     public void return_init_position_when_not_move() {
         Position initPosition = new Position(1,1,"N");
@@ -37,12 +25,23 @@ public class MarsRoverTest {
         assertThat(marsRover.printPosition()).isEqualTo("(1,1) N");
     }
 
+    /*
+        2.输入空指令,获取结束位置
+        Position(1,1,N)，"" -> (1,1) N
+     */
     @Test
     public void return_init_position_when_move_order_is_empty() {
         Position initPosition = new Position(1,1,"N");
         assertMarsRoverPosition("(1,1) N", "", initPosition);
     }
 
+    /*
+        3.输入指令前进M,获取结束位置
+        Position(1,1,N)，"M" -> (1,2) N
+        Position(1,1,S)，"M" -> (1,0) S
+        Position(1,1,E)，"M" -> (2,1) E
+        Position(1,1,W)，"M" -> (0,1) W
+     */
     @Test
     public void return_final_position_when_move_forward_to_North() {
         Position initPosition = new Position(1,1,"N");
@@ -67,6 +66,13 @@ public class MarsRoverTest {
         assertMarsRoverPosition("(0,1) W", "M", initPosition);
     }
 
+    /*
+        4.输入指令左转L，获取结束位置W
+        Position(1,1,N)，"L" -> (1,1) W
+        Position(1,1,S)，"L" -> (1,1) E
+        Position(1,1,E)，"L" -> (1,1) N
+        Position(1,1,W)，"L" -> (1,1) S
+     */
     @Test
     public void return_final_position_when_move_left_from_North() {
         Position initPosition = new Position(1,1,"N");
@@ -89,6 +95,37 @@ public class MarsRoverTest {
     public void return_final_position_when_move_left_from_West() {
         Position initPosition = new Position(1,1,"W");
         assertMarsRoverPosition("(1,1) S", "L", initPosition);
+    }
+
+    /*
+        5.输入指令右转转R，获取结束位置E
+        Position(1,1,N)，"R" -> (1,1) E
+        Position(1,1,S)，"R" -> (1,1) W
+        Position(1,1,E)，"R" -> (1,1) S
+        Position(1,1,W)，"R" -> (1,1) N
+     */
+    @Test
+    public void return_final_position_when_move_right_from_North() {
+        Position initPosition = new Position(1,1,"N");
+        assertMarsRoverPosition("(1,1) E", "R", initPosition);
+    }
+
+    @Test
+    public void return_final_position_when_move_right_from_South() {
+        Position initPosition = new Position(1,1,"S");
+        assertMarsRoverPosition("(1,1) W", "R", initPosition);
+    }
+
+    @Test
+    public void return_final_position_when_move_right_from_East() {
+        Position initPosition = new Position(1,1,"E");
+        assertMarsRoverPosition("(1,1) S", "R", initPosition);
+    }
+
+    @Test
+    public void return_final_position_when_move_right_from_West() {
+        Position initPosition = new Position(1,1,"W");
+        assertMarsRoverPosition("(1,1) N", "R", initPosition);
     }
 
     private void assertMarsRoverPosition(String expect,String order, Position initPosition) {

@@ -17,5 +17,8 @@ public class MarsRover {
         if(order == "L") {
             position.turnLeft();
         }
+        if(order == "R") {
+            position.turnRight();
+        }
     }
 }

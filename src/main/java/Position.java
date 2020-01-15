@@ -50,4 +50,23 @@ public class Position {
                 break;
         }
     }
+
+    public void turnRight() {
+        switch (direction) {
+            case Direction.NORTH:
+                direction = Direction.EAST;
+                break;
+            case Direction.SOUTH:
+                direction = Direction.WEST;
+                break;
+            case Direction.EAST:
+                direction = Direction.SOUTH;
+                break;
+            case Direction.WEST:
+                direction = Direction.NORTH;
+                break;
+            default:
+                break;
+        }
+    }
 }
