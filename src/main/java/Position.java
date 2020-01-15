@@ -33,6 +33,10 @@ public class Position {
     }
 
     public void turnLeft() {
-        direction = "W";
+        if (direction == Direction.SOUTH) {
+            direction = Direction.EAST;
+        } else {
+            direction = Direction.WEST;
+        }
     }
 }
