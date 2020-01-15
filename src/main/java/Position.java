@@ -33,10 +33,17 @@ public class Position {
     }
 
     public void turnLeft() {
-        if (direction == Direction.SOUTH) {
-            direction = Direction.EAST;
-        } else {
-            direction = Direction.WEST;
+        switch (direction) {
+            case Direction.SOUTH:
+                direction = Direction.EAST;
+                break;
+            case Direction.NORTH:
+                direction = Direction.WEST;
+                break;
+            case Direction.EAST:
+                direction = Direction.NORTH;
+            default:
+                break;
         }
     }
 }
