@@ -11,6 +11,8 @@ public class MarsRover {
     }
 
     public void sendOrder(String order) {
-        return;
+        if(order == "M") {
+            position.forward();
+        }
     }
 }
