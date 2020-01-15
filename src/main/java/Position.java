@@ -14,14 +14,21 @@ public class Position {
     }
 
     public void forward() {
-        if (direction == "S") {
-            this.y--;
-        } else if(direction == "E"){
-            this.x++;
-        } else if(direction == "W") {
-            this.x--;
-        } else {
-            this.y++;
+        switch (direction) {
+            case Direction.SOUTH:
+                this.y--;
+                break;
+            case Direction.EAST:
+                this.x++;
+                break;
+            case Direction.WEST:
+                this.x--;
+                break;
+            case Direction.NORTH:
+                this.y++;
+                break;
+            default:
+                break;
         }
     }
 }
