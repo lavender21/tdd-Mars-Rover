@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MarsRoverProcessor {
@@ -21,7 +23,10 @@ public class MarsRoverProcessor {
             put("R", turnRightCommand);
         }};
 
-        commandMap.get(command).execute();
+        String[] commands = command.split(" ");
+
+        Arrays.stream(commands).forEach(signalCommand -> commandMap.get(signalCommand).execute());
+
     }
 
     public String printLocation() {

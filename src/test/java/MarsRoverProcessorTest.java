@@ -1,14 +1,3 @@
-/*
-tasks
-
-6.输入指令前进,左转，获取结束位置
-    Position(1,1,N)，"M L" -> (1,2) W
-7.输入指令前进,右转，获取结束位置
-    Position(1,1,N)，"M R" -> (1,2) E
-8.输入指令前进，左转，右转，获取结束位置
-    Position(1,1,N)，"M R M L" -> (2,2) N
- */
-
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
@@ -116,11 +105,20 @@ public class MarsRoverProcessorTest {
         assertMarsRoverPosition("(1,1) N", "R", "W");
     }
 
-    private void assertMarsRoverPosition(String expect,String order, String direction) {
+    /*
+        6.输入指令前进，左转，右转，获取结束位置
+        Position(1,1,N)，"M R M L" -> (2,2) N
+     */
+    @Test
+    public void return_final_position_when_send_multiple_command() {
+        assertMarsRoverPosition("(2,2) N", "M R M L", "N");
+    }
+
+    private void assertMarsRoverPosition(String expect,String command, String direction) {
         Coord coord = new Coord(1,1);
         Rover rover = new Rover(coord, direction);
         MarsRoverProcessor marsRoverProcessor = new MarsRoverProcessor(rover);
-        marsRoverProcessor.sendCommand(order);
+        marsRoverProcessor.sendCommand(command);
 
         assertThat(marsRoverProcessor.printLocation()).isEqualTo(expect);
     }
