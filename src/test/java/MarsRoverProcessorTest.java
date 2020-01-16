@@ -12,17 +12,18 @@ tasks
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
-public class MarsRoverTest {
+public class MarsRoverProcessorTest {
     /*
         1.初始化位置，不做任何移动，获取当前位置
             Position(1,1,N) -> "(1,1) N"
      */
     @Test
     public void return_init_position_when_not_move() {
-        Position initPosition = new Position(1,1,"N");
-        MarsRover marsRover = new MarsRover(initPosition);
+        Coord coord = new Coord(1,1);
+        Rover rover = new Rover(coord, "N");
+        MarsRoverProcessor marsRoverProcessor = new MarsRoverProcessor(rover);
 
-        assertThat(marsRover.printPosition()).isEqualTo("(1,1) N");
+        assertThat(marsRoverProcessor.printLocation()).isEqualTo("(1,1) N");
     }
 
     /*
@@ -31,8 +32,7 @@ public class MarsRoverTest {
      */
     @Test
     public void return_init_position_when_move_order_is_empty() {
-        Position initPosition = new Position(1,1,"N");
-        assertMarsRoverPosition("(1,1) N", "", initPosition);
+        assertMarsRoverPosition("(1,1) N", "", "N");
     }
 
     /*
@@ -44,26 +44,22 @@ public class MarsRoverTest {
      */
     @Test
     public void return_final_position_when_move_forward_to_North() {
-        Position initPosition = new Position(1,1,"N");
-        assertMarsRoverPosition("(1,2) N", "M", initPosition);
+        assertMarsRoverPosition("(1,2) N", "M", "N");
     }
 
     @Test
     public void return_final_position_when_move_forward_to_South() {
-        Position initPosition = new Position(1,1,"S");
-        assertMarsRoverPosition("(1,0) S", "M", initPosition);
+        assertMarsRoverPosition("(1,0) S", "M", "S");
     }
 
     @Test
     public void return_final_position_when_move_forward_to_East() {
-        Position initPosition = new Position(1,1,"E");
-        assertMarsRoverPosition("(2,1) E", "M", initPosition);
+        assertMarsRoverPosition("(2,1) E", "M", "E");
     }
 
     @Test
     public void return_final_position_when_move_forward_to_West() {
-        Position initPosition = new Position(1,1,"W");
-        assertMarsRoverPosition("(0,1) W", "M", initPosition);
+        assertMarsRoverPosition("(0,1) W", "M", "W");
     }
 
     /*
@@ -75,26 +71,22 @@ public class MarsRoverTest {
      */
     @Test
     public void return_final_position_when_move_left_from_North() {
-        Position initPosition = new Position(1,1,"N");
-        assertMarsRoverPosition("(1,1) W", "L", initPosition);
+        assertMarsRoverPosition("(1,1) W", "L", "N");
     }
 
     @Test
     public void return_final_position_when_move_left_from_South() {
-        Position initPosition = new Position(1,1,"S");
-        assertMarsRoverPosition("(1,1) E", "L", initPosition);
+        assertMarsRoverPosition("(1,1) E", "L", "S");
     }
 
     @Test
     public void return_final_position_when_move_left_from_East() {
-        Position initPosition = new Position(1,1,"E");
-        assertMarsRoverPosition("(1,1) N", "L", initPosition);
+        assertMarsRoverPosition("(1,1) N", "L", "E");
     }
 
     @Test
     public void return_final_position_when_move_left_from_West() {
-        Position initPosition = new Position(1,1,"W");
-        assertMarsRoverPosition("(1,1) S", "L", initPosition);
+        assertMarsRoverPosition("(1,1) S", "L", "W");
     }
 
     /*
@@ -106,33 +98,31 @@ public class MarsRoverTest {
      */
     @Test
     public void return_final_position_when_move_right_from_North() {
-        Position initPosition = new Position(1,1,"N");
-        assertMarsRoverPosition("(1,1) E", "R", initPosition);
+        assertMarsRoverPosition("(1,1) E", "R", "N");
     }
 
     @Test
     public void return_final_position_when_move_right_from_South() {
-        Position initPosition = new Position(1,1,"S");
-        assertMarsRoverPosition("(1,1) W", "R", initPosition);
+        assertMarsRoverPosition("(1,1) W", "R", "S");
     }
 
     @Test
     public void return_final_position_when_move_right_from_East() {
-        Position initPosition = new Position(1,1,"E");
-        assertMarsRoverPosition("(1,1) S", "R", initPosition);
+        assertMarsRoverPosition("(1,1) S", "R", "E");
     }
 
     @Test
     public void return_final_position_when_move_right_from_West() {
-        Position initPosition = new Position(1,1,"W");
-        assertMarsRoverPosition("(1,1) N", "R", initPosition);
+        assertMarsRoverPosition("(1,1) N", "R", "W");
     }
 
-    private void assertMarsRoverPosition(String expect,String order, Position initPosition) {
-        MarsRover marsRover = new MarsRover(initPosition);
-        marsRover.sendOrder(order);
+    private void assertMarsRoverPosition(String expect,String order, String direction) {
+        Coord coord = new Coord(1,1);
+        Rover rover = new Rover(coord, direction);
+        MarsRoverProcessor marsRoverProcessor = new MarsRoverProcessor(rover);
+        marsRoverProcessor.sendOrder(order);
 
-        assertThat(marsRover.printPosition()).isEqualTo(expect);
+        assertThat(marsRoverProcessor.printLocation()).isEqualTo(expect);
     }
 
 }

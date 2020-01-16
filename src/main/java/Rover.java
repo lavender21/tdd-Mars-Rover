@@ -1,31 +1,37 @@
-public class Position {
-    private int x;
-    private int y;
+public class Rover {
+    private Coord coord;
     private String direction;
 
-    public Position(int x, int y, String direction) {
-        this.x = x;
-        this.y = y;
+    public Rover(Coord coord, String direction) {
+        this.coord = coord;
         this.direction = direction;
     }
 
-    public String toString() {
-        return "(" + x + "," + y + ") " + direction;
+    public String getCoord() {
+        return "("+ coord.getX() +","+ coord.getY() +")";
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public String printLocation() {
+        return getCoord() + " " + getDirection();
     }
 
     public void forward() {
         switch (direction) {
             case Direction.SOUTH:
-                this.y--;
+                this.coord.minusY();
                 break;
             case Direction.EAST:
-                this.x++;
+                this.coord.addX();
                 break;
             case Direction.WEST:
-                this.x--;
+                this.coord.minusX();
                 break;
             case Direction.NORTH:
-                this.y++;
+                this.coord.addY();
                 break;
             default:
                 break;
