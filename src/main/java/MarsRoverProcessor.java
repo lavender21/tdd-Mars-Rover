@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 
 public class MarsRoverProcessor {
     private Rover rover;
@@ -7,19 +9,19 @@ public class MarsRoverProcessor {
     }
 
     public void sendCommand(String command) {
+        if (command.isEmpty()) return;
+
         ForwardCommand forwardCommand = new ForwardCommand(rover);
         TurnLeftCommand turnLeftCommand = new TurnLeftCommand(rover);
         TurnRightCommand turnRightCommand = new TurnRightCommand(rover);
 
-        if(command.equals("M")) {
-            forwardCommand.execute();
-        }
-        if(command.equals("L")) {
-            turnLeftCommand.execute();
-        }
-        if(command.equals("R")) {
-            turnRightCommand.execute();
-        }
+        Map<String, Command> commandMap = new HashMap<String, Command>(){{
+            put("M", forwardCommand);
+            put("L", turnLeftCommand);
+            put("R", turnRightCommand);
+        }};
+
+        commandMap.get(command).execute();
     }
 
     public String printLocation() {
