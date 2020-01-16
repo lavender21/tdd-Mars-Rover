@@ -120,7 +120,7 @@ public class MarsRoverProcessorTest {
         Coord coord = new Coord(1,1);
         Rover rover = new Rover(coord, direction);
         MarsRoverProcessor marsRoverProcessor = new MarsRoverProcessor(rover);
-        marsRoverProcessor.sendOrder(order);
+        marsRoverProcessor.sendCommand(order);
 
         assertThat(marsRoverProcessor.printLocation()).isEqualTo(expect);
     }

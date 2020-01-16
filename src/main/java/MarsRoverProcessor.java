@@ -6,14 +6,16 @@ public class MarsRoverProcessor {
         this.rover = rover;
     }
 
-    public void sendOrder(String order) {
-        if(order.equals("M")) {
-            rover.forward();
+    public void sendCommand(String command) {
+        ForwardCommand forwardCommand = new ForwardCommand(rover);
+
+        if(command.equals("M")) {
+            forwardCommand.execute();
         }
-        if(order.equals("L")) {
+        if(command.equals("L")) {
             rover.turnLeft();
         }
-        if(order.equals("R")) {
+        if(command.equals("R")) {
             rover.turnRight();
         }
     }
