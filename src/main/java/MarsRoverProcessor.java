@@ -9,6 +9,7 @@ public class MarsRoverProcessor {
     public void sendCommand(String command) {
         ForwardCommand forwardCommand = new ForwardCommand(rover);
         TurnLeftCommand turnLeftCommand = new TurnLeftCommand(rover);
+        TurnRightCommand turnRightCommand = new TurnRightCommand(rover);
 
         if(command.equals("M")) {
             forwardCommand.execute();
@@ -17,7 +18,7 @@ public class MarsRoverProcessor {
             turnLeftCommand.execute();
         }
         if(command.equals("R")) {
-            rover.turnRight();
+            turnRightCommand.execute();
         }
     }
 
