@@ -31,7 +31,11 @@ public class MarsRoverProcessor {
 
         String[] commands = command.split(" ");
 
-        Arrays.stream(commands).forEach(signalCommand -> commandMap.get(signalCommand).execute());
+        Arrays.stream(commands).forEach(signalCommand -> {
+            if (commandMap.containsKey(signalCommand)) {
+                commandMap.get(signalCommand).execute();
+            }
+        });
 
     }
 

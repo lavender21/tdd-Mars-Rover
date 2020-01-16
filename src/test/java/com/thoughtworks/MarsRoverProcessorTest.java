@@ -117,6 +117,15 @@ public class MarsRoverProcessorTest {
         assertMarsRoverPosition("(2,2) N", "M R M L", "N");
     }
 
+    /*
+        7.输入非法指令跳过
+        Position(1,1,N), "M R M A M B" -> (3,2) E"
+     */
+    @Test
+    public void skip_invalid_command_and_return_final_position_when_send_multiple_command() {
+        assertMarsRoverPosition("(3,2) E", "M R M A M B", "N");
+    }
+
     private void assertMarsRoverPosition(String expect,String command, String direction) {
         Coord coord = new Coord(1,1);
         Rover rover = new Rover(coord, direction);
