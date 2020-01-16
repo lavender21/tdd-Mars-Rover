@@ -11,13 +11,13 @@ public class MarsRover {
     }
 
     public void sendOrder(String order) {
-        if(order == "M") {
+        if(order.equals("M")) {
             position.forward();
         }
-        if(order == "L") {
+        if(order.equals("L")) {
             position.turnLeft();
         }
-        if(order == "R") {
+        if(order.equals("R")) {
             position.turnRight();
         }
     }

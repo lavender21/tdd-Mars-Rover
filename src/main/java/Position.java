@@ -1,6 +1,3 @@
-import java.util.Map;
-import java.util.stream.Collectors;
-
 public class Position {
     private int x;
     private int y;
@@ -36,18 +33,14 @@ public class Position {
     }
 
     public void turnLeft() {
-        Integer key = Direction.directionMaps.entrySet()
-                .stream()
-                .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)).get(direction);
-        Integer directionKey =   key - 1 == 0 ? Direction.directionMaps.size() : key - 1;
-        direction = Direction.directionMaps.get(directionKey);
+        Integer currentKey = Direction.invertMaps().get(direction);
+        Integer nextKey = currentKey - 1 == 0 ? Direction.maps.size() : currentKey - 1;
+        direction = Direction.maps.get(nextKey);
     }
 
     public void turnRight() {
-        Integer key = Direction.directionMaps.entrySet()
-                .stream()
-                .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey)).get(direction);
-        Integer directionKey =   key + 1 == Direction.directionMaps.size() + 1 ? 1 : key + 1;
-        direction = Direction.directionMaps.get(directionKey);
+        Integer currentKey = Direction.invertMaps().get(direction);
+        Integer nextKey = currentKey % Direction.maps.size() + 1;
+        direction = Direction.maps.get(nextKey);
     }
 }
