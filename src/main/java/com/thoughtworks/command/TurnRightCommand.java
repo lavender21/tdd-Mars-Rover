@@ -1,3 +1,7 @@
+package com.thoughtworks.command;
+
+import com.thoughtworks.Rover;
+
 public class TurnRightCommand implements Command {
     private Rover rover;
 

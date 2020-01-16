@@ -1,3 +1,7 @@
+package com.thoughtworks.command;
+
+import com.thoughtworks.Rover;
+
 public class ForwardCommand implements Command {
     private Rover rover;
 

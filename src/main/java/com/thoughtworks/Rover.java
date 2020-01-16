@@ -1,3 +1,5 @@
+package com.thoughtworks;
+
 public class Rover {
     private Coord coord;
     private String direction;

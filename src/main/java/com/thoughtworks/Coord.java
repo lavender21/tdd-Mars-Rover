@@ -1,3 +1,4 @@
+package com.thoughtworks;
 
 public class Coord {
     private int x;

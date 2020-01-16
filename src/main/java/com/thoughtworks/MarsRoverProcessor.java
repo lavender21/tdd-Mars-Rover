@@ -1,3 +1,10 @@
+package com.thoughtworks;
+
+import com.thoughtworks.command.Command;
+import com.thoughtworks.command.ForwardCommand;
+import com.thoughtworks.command.TurnLeftCommand;
+import com.thoughtworks.command.TurnRightCommand;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
