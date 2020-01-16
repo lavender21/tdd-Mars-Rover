@@ -8,12 +8,13 @@ public class MarsRoverProcessor {
 
     public void sendCommand(String command) {
         ForwardCommand forwardCommand = new ForwardCommand(rover);
+        TurnLeftCommand turnLeftCommand = new TurnLeftCommand(rover);
 
         if(command.equals("M")) {
             forwardCommand.execute();
         }
         if(command.equals("L")) {
-            rover.turnLeft();
+            turnLeftCommand.execute();
         }
         if(command.equals("R")) {
             rover.turnRight();
