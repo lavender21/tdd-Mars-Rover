@@ -18,4 +18,8 @@ public enum Direction {
     public Direction getLeft() {
         return Direction.values()[(ordinal() + 1) % 4];
     }
+
+    public Direction getRight() {
+        return Direction.values()[(ordinal() + 3) % 4];
+    }
 }

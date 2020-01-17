@@ -85,7 +85,7 @@ public class CarTest {
 
     @Test
     public void return_location_when_turn_right_from_north() {
-        
+        testCarAction(TURN_RIGHT, Direction.NORTH, 1,1,Direction.EAST);
     }
 
     private void testCarAction(String operation, Direction direction, int expectedX, int expectedY, Direction expectedDirection) {

@@ -34,6 +34,7 @@ public class Car {
     }
 
     public void turnRight() {
+        direction = direction.getRight();
     }
 
     public Coordinate getCoordinate() {
