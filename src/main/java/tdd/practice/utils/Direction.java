@@ -11,10 +11,6 @@ public enum Direction {
         this.value = value;
     }
 
-    public String print() {
-        return value;
-    }
-
     public Direction getLeft() {
         return Direction.values()[(ordinal() + 1) % 4];
     }

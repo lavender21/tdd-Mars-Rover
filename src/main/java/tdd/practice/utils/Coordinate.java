@@ -9,10 +9,6 @@ public class Coordinate {
         this.y = y;
     }
 
-    public String print() {
-        return "("+ x +"," + y + ")";
-    }
-
     public void addY(int i) {
         y += i;
     }
