@@ -13,6 +13,18 @@ public class Car {
     }
 
     public String printLocation() {
-        return "(1,1) N";
+        return coordinate.print() + " " + direction.print();
+    }
+
+    public void move() {
+        if (direction.equals(Direction.SOUTH)) {
+            coordinate.addY(-1);
+        } else if (direction.equals(Direction.WEST)) {
+            coordinate.addX(-1);
+        } else if (direction.equals(Direction.EAST)) {
+            coordinate.addX(1);
+        } else {
+            coordinate.addY(1);
+        }
     }
 }

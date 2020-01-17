@@ -8,4 +8,16 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
+
+    public String print() {
+        return "("+ x +"," + y + ")";
+    }
+
+    public void addY(int i) {
+        y += i;
+    }
+
+    public void addX(int i) {
+        x += i;
+    }
 }

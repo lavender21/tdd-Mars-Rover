@@ -6,6 +6,12 @@ public enum Direction {
     EAST("E"),
     WEST("W");
 
+    private String value;
     Direction(String value) {
+        this.value = value;
+    }
+
+    public String print() {
+        return value;
     }
 }
