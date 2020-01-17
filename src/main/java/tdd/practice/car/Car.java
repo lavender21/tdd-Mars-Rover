@@ -29,10 +29,6 @@ public class Car {
         direction = direction.getLeft();
     }
 
-    private boolean isEqualsDirection(Direction d) {
-        return direction.equals(d);
-    }
-
     public void turnRight() {
         direction = direction.getRight();
     }
@@ -43,5 +39,9 @@ public class Car {
 
     public Direction getDirection() {
         return direction;
+    }
+
+    private boolean isEqualsDirection(Direction d) {
+        return direction.equals(d);
     }
 }
