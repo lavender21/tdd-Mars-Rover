@@ -17,14 +17,15 @@ public class Car {
     }
 
     public void move() {
+        int STEP = 1;
         if (direction.equals(Direction.SOUTH)) {
-            coordinate.addY(-1);
+            coordinate.addY(-STEP);
         } else if (direction.equals(Direction.WEST)) {
-            coordinate.addX(-1);
+            coordinate.addX(-STEP);
         } else if (direction.equals(Direction.EAST)) {
-            coordinate.addX(1);
+            coordinate.addX(STEP);
         } else {
-            coordinate.addY(1);
+            coordinate.addY(STEP);
         }
     }
 }
