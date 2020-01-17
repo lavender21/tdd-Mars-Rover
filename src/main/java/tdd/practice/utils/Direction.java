@@ -2,9 +2,9 @@ package tdd.practice.utils;
 
 public enum Direction {
     NORTH("N"),
+    WEST("W"),
     SOUTH("S"),
-    EAST("E"),
-    WEST("W");
+    EAST("E");
 
     private String value;
     Direction(String value) {
@@ -13,5 +13,9 @@ public enum Direction {
 
     public String print() {
         return value;
+    }
+
+    public Direction getLeft() {
+        return Direction.values()[(ordinal() + 1) % 4];
     }
 }

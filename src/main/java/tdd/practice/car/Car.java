@@ -18,11 +18,11 @@ public class Car {
 
     public void move() {
         int STEP = 1;
-        if (direction.equals(Direction.SOUTH)) {
+        if (isEqualsDirection(Direction.SOUTH)) {
             coordinate.addY(-STEP);
-        } else if (direction.equals(Direction.WEST)) {
+        } else if (isEqualsDirection(Direction.WEST)) {
             coordinate.addX(-STEP);
-        } else if (direction.equals(Direction.EAST)) {
+        } else if (isEqualsDirection(Direction.EAST)) {
             coordinate.addX(STEP);
         } else {
             coordinate.addY(STEP);
@@ -30,14 +30,11 @@ public class Car {
     }
 
     public void turnLeft() {
-        if (direction.equals(Direction.SOUTH)) {
-            direction = Direction.EAST;
-        } else if(direction.equals(Direction.WEST)) {
-            direction = Direction.SOUTH;
-        } else if(direction.equals(Direction.EAST)) {
-            direction = Direction.NORTH;
-        } else {
-            direction = Direction.WEST;
-        }
+        direction = direction.getLeft();
     }
+
+    private boolean isEqualsDirection(Direction d) {
+        return direction.equals(d);
+    }
+
 }
