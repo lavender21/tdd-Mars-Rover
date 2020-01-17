@@ -31,9 +31,14 @@ public class CarTest {
 
     @Test
     public void return_current_location_when_init_a_car() {
-        Coordinate coordinate = new Coordinate(1,1);
-        Car car = new Car(coordinate, Direction.NORTH);
+        assertLocation(Direction.NORTH, "(1,1) N");
+    }
 
-        assertThat(car.printLocation()).isEqualTo("(1,1) N");
+
+    private void assertLocation(Direction direction, String expected) {
+        Coordinate coordinate = new Coordinate(1,1);
+        Car car = new Car(coordinate, direction);
+
+        assertThat(car.printLocation()).isEqualTo(expected);
     }
 }
