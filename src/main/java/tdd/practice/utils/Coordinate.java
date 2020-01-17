@@ -20,4 +20,12 @@ public class Coordinate {
     public void addX(int i) {
         x += i;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

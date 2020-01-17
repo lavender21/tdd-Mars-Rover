@@ -12,10 +12,6 @@ public class Car {
         this.direction = direction;
     }
 
-    public String printLocation() {
-        return coordinate.print() + " " + direction.print();
-    }
-
     public void move() {
         int STEP = 1;
         if (isEqualsDirection(Direction.SOUTH)) {
@@ -37,4 +33,14 @@ public class Car {
         return direction.equals(d);
     }
 
+    public void turnRight() {
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
 }

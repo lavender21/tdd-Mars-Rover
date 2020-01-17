@@ -28,68 +28,79 @@ import static org.assertj.core.api.Assertions.*;
  */
 
 public class CarTest {
+    private final String MOVE = "move";
+    private final String TURN_LEFT = "left";
+    private final String TURN_RIGHT = "right";
 
     @Test
     public void return_current_location_when_init_a_car() {
         Coordinate coordinate = new Coordinate(1,1);
         Car car = new Car(coordinate, Direction.NORTH);
 
-        assertThat(car.printLocation()).isEqualTo("(1,1) N");
+        assertThat(car.getCoordinate().getX()).isEqualTo(1);
+        assertThat(car.getCoordinate().getY()).isEqualTo(1);
+        assertThat(car.getDirection()).isEqualTo(Direction.NORTH);
     }
 
     @Test
     public void return_location_when_move_to_north() {
-        testMoveAction(Direction.NORTH, "(1,2) N");
+
+        testCarAction( MOVE,Direction.NORTH,1,2,Direction.NORTH);
     }
 
     @Test
     public void return_location_when_move_to_south() {
-        testMoveAction(Direction.SOUTH, "(1,0) S");
+        testCarAction( MOVE,Direction.SOUTH,1,0,Direction.SOUTH);
     }
 
     @Test
     public void return_location_when_move_to_west() {
-        testMoveAction(Direction.WEST, "(0,1) W");
+        testCarAction( MOVE,Direction.WEST,0,1,Direction.WEST);
     }
 
     @Test
     public void return_location_when_move_to_east() {
-        testMoveAction(Direction.EAST, "(2,1) E");
+        testCarAction( MOVE,Direction.EAST,2,1,Direction.EAST);
     }
 
     @Test
     public void return_location_when_turn_left_from_north() {
-        testTurnLeftAction(Direction.NORTH, "(1,1) W");
+        testCarAction(TURN_LEFT,Direction.NORTH,1,1,Direction.WEST);
     }
 
     @Test
     public void return_location_when_turn_left_from_south() {
-        testTurnLeftAction(Direction.SOUTH, "(1,1) E");
+        testCarAction(TURN_LEFT,Direction.SOUTH,1,1,Direction.EAST);
     }
 
     @Test
     public void return_location_when_turn_left_from_west() {
-        testTurnLeftAction(Direction.WEST, "(1,1) S");
+        testCarAction(TURN_LEFT,Direction.WEST,1,1,Direction.SOUTH);
     }
 
     @Test
     public void return_location_when_turn_left_from_east() {
-        testTurnLeftAction(Direction.EAST, "(1,1) N");
+        testCarAction(TURN_LEFT,Direction.EAST,1,1,Direction.NORTH);
     }
 
-    private void testMoveAction(Direction direction, String expected) {
-        Coordinate coordinate = new Coordinate(1,1);
-        Car car = new Car(coordinate, direction);
-        car.move();
-
-        assertThat(car.printLocation()).isEqualTo(expected);
+    @Test
+    public void return_location_when_turn_right_from_north() {
+        
     }
 
-    private void testTurnLeftAction(Direction direction, String expected) {
+    private void testCarAction(String operation, Direction direction, int expectedX, int expectedY, Direction expectedDirection) {
         Coordinate coordinate = new Coordinate(1,1);
         Car car = new Car(coordinate, direction);
-        car.turnLeft();
+        if(operation.equals(MOVE)) {
+            car.move();
+        } else if(operation.equals(TURN_LEFT)) {
+            car.turnLeft();
+        } else if(operation.equals(TURN_RIGHT)) {
+            car.turnRight();
+        }
 
-        assertThat(car.printLocation()).isEqualTo(expected);
+        assertThat(car.getCoordinate().getX()).isEqualTo(expectedX);
+        assertThat(car.getCoordinate().getY()).isEqualTo(expectedY);
+        assertThat(car.getDirection()).isEqualTo(expectedDirection);
     }
 }
