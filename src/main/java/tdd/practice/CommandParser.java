@@ -5,6 +5,6 @@ import java.util.List;
 
 public class CommandParser {
     public List<String> parse(String input) {
-        return Arrays.asList(input);
+        return Arrays.asList(input.split(" "));
     }
 }
