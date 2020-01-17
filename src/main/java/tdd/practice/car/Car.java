@@ -28,4 +28,16 @@ public class Car {
             coordinate.addY(STEP);
         }
     }
+
+    public void turnLeft() {
+        if (direction.equals(Direction.SOUTH)) {
+            direction = Direction.EAST;
+        } else if(direction.equals(Direction.WEST)) {
+            direction = Direction.SOUTH;
+        } else if(direction.equals(Direction.EAST)) {
+            direction = Direction.NORTH;
+        } else {
+            direction = Direction.WEST;
+        }
+    }
 }

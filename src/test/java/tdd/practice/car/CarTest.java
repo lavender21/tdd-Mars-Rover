@@ -57,10 +57,38 @@ public class CarTest {
         testMoveAction(Direction.EAST, "(2,1) E");
     }
 
+    @Test
+    public void return_location_when_turn_left_from_north() {
+        testTurnLeftAction(Direction.NORTH, "(1,1) W");
+    }
+
+    @Test
+    public void return_location_when_turn_left_from_south() {
+        testTurnLeftAction(Direction.SOUTH, "(1,1) E");
+    }
+
+    @Test
+    public void return_location_when_turn_left_from_west() {
+        testTurnLeftAction(Direction.WEST, "(1,1) S");
+    }
+
+    @Test
+    public void return_location_when_turn_left_from_east() {
+        testTurnLeftAction(Direction.EAST, "(1,1) N");
+    }
+
     private void testMoveAction(Direction direction, String expected) {
         Coordinate coordinate = new Coordinate(1,1);
         Car car = new Car(coordinate, direction);
         car.move();
+
+        assertThat(car.printLocation()).isEqualTo(expected);
+    }
+
+    private void testTurnLeftAction(Direction direction, String expected) {
+        Coordinate coordinate = new Coordinate(1,1);
+        Car car = new Car(coordinate, direction);
+        car.turnLeft();
 
         assertThat(car.printLocation()).isEqualTo(expected);
     }
