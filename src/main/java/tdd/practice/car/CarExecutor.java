@@ -19,11 +19,13 @@ public class CarExecutor {
         Command moveCommand = new MoveCommand(car);
         Command turnLeftCommand = new TurnLeftCommand(car);
         Command turnRightCommand = new TurnRightCommand(car);
+        Command backCommand = new BackCommand(car);
 
         Map<String, Command> commandMap = new HashMap<String, Command>(){{
             put(MoveCommand.NAME, moveCommand);
             put(TurnLeftCommand.NAME, turnLeftCommand);
             put(TurnRightCommand.NAME, turnRightCommand);
+            put(BackCommand.NAME, backCommand);
         }};
 
         cmdList.forEach(cmdItem -> {

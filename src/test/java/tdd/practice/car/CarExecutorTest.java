@@ -10,18 +10,28 @@ import static org.assertj.core.api.Assertions.assertThat;
     2.car 1,1 N cmd L -> 1,1 W
     3.car 1,1 N cmd R -> 1,1 E
     4.car 1,1 N cmd L M R  -> 0,1 N
-    5.car 1,1 N cmd B M M -> 1，-1 N
+    5.car 1,1 N cmd B M M R M -> 2,-1 W
  */
 
 public class CarExecutorTest {
     @Test
     public void execute_car_when_send_cmd_L_M_R() {
-        Car car = initialCarExecutor(1,1, Direction.NORTH);
+        Car car = initCar(1,1, Direction.NORTH);
         CarExecutor carExecutor = new CarExecutor(car);
 
         carExecutor.execute("L M R");
 
         assertCarLocation(car, 0, 1, Direction.NORTH);
+    }
+
+    @Test
+    public void execute_car_back_mode_when_cmd_include_back() {
+        Car car = initCar(1,1, Direction.NORTH);
+        CarExecutor carExecutor = new CarExecutor(car);
+
+        carExecutor.execute("B M M R M");
+
+        assertCarLocation(car, 2, -1, Direction.WEST);
     }
 
     private void assertCarLocation(Car car, int x, int y, Direction d) {
@@ -30,7 +40,7 @@ public class CarExecutorTest {
         assertThat(car.getDirection()).isEqualTo(d);
     }
 
-    private Car initialCarExecutor(int x, int y, Direction d) {
+    private Car initCar(int x, int y, Direction d) {
         Coordinate coordinate = new Coordinate(x, y);
         return new Car(coordinate, d);
     }
