@@ -31,7 +31,7 @@ public class Car {
     }
 
     public void turnRight() {
-        direction = direction.getRight();
+        direction = backMode ? direction.getLeft() : direction.getRight();
     }
 
     public Coordinate getCoordinate() {

@@ -108,6 +108,16 @@ public class CarTest {
         assertCarPosition(1,1, Direction.EAST, car);
     }
 
+    @Test
+    public void return_location_when_car_enable_back_mode_and_turn_right() {
+        Car car = initCar(1,1, Direction.NORTH);
+
+        car.toggleBackMode();
+        car.turnRight();
+
+        assertCarPosition(1,1, Direction.WEST, car);
+    }
+
     private void testCarAction(String operation, Direction direction, int expectedX, int expectedY, Direction expectedDirection) {
         Car car = initCar(1,1,direction);
         if(operation.equals(MOVE)) {
