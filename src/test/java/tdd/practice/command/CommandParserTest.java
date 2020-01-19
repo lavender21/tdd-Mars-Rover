@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.*;
     1."M" -> ["M"]
     2."M L R" -> ["M", "L", "R"]
     3."M L A R" -> ["M","L", "R"]
+    4."B" -> ["B"] 添加新指令
  */
 public class CommandParserTest {
 
@@ -32,5 +33,11 @@ public class CommandParserTest {
     public void filter_invalid_command_when_input_command_not_support() {
         List<String> commandList = Arrays.asList("M","L","R");
         assertThat(commandParser.parse("M L A R")).isEqualTo(commandList);
+    }
+
+    @Test
+    public void return_command_list_with_item_B_when_input_B() {
+        List<String> commandList = Arrays.asList("B");
+        assertThat(commandParser.parse("B")).isEqualTo(commandList);
     }
 }
