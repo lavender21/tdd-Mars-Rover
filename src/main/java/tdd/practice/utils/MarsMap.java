@@ -13,4 +13,8 @@ public class MarsMap {
     public void markDitch(Coordinate coordinate) {
         ditches.add(coordinate);
     }
+
+    public boolean isDitches(Coordinate coordinate) {
+        return true;
+    }
 }

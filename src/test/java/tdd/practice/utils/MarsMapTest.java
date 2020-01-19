@@ -20,4 +20,13 @@ public class MarsMapTest {
         assertThat(marsMap.getDitches().get(0).getX()).isEqualTo(2);
         assertThat(marsMap.getDitches().get(0).getY()).isEqualTo(2);
     }
+
+    @Test
+    public void return_true_when_coordinate_is_mark_as_ditches_in_map() {
+        MarsMap marsMap = new MarsMap();
+
+        marsMap.markDitch(new Coordinate(1,1));
+
+        assertThat(marsMap.isDitches(new Coordinate(1,1))).isEqualTo(true);
+    }
 }
