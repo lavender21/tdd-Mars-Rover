@@ -31,9 +31,6 @@ import static org.assertj.core.api.Assertions.*;
  */
 
 public class CarTest {
-    private final String MOVE = "move";
-    private final String TURN_LEFT = "left";
-    private final String TURN_RIGHT = "right";
 
     @Test
     public void return_current_location_when_init_a_car() {
@@ -44,48 +41,83 @@ public class CarTest {
 
     @Test
     public void return_location_when_move_to_north() {
+        Car car = initCar(1,1,Direction.NORTH);
 
-        testCarAction( MOVE,Direction.NORTH,1,2,Direction.NORTH);
+        car.move();
+
+        assertCarPosition(1, 2, Direction.NORTH, car);
     }
 
     @Test
     public void return_location_when_move_to_south() {
-        testCarAction( MOVE,Direction.SOUTH,1,0,Direction.SOUTH);
+        Car car = initCar(1,1,Direction.SOUTH);
+
+        car.move();
+
+        assertCarPosition(1, 0, Direction.SOUTH, car);
     }
 
     @Test
     public void return_location_when_move_to_west() {
-        testCarAction( MOVE,Direction.WEST,0,1,Direction.WEST);
+        Car car = initCar(1,1,Direction.WEST);
+
+        car.move();
+
+        assertCarPosition(0, 1, Direction.WEST, car);
     }
 
     @Test
     public void return_location_when_move_to_east() {
-        testCarAction( MOVE,Direction.EAST,2,1,Direction.EAST);
+        Car car = initCar(1,1,Direction.EAST);
+
+        car.move();
+
+        assertCarPosition(2, 1, Direction.EAST, car);
     }
 
     @Test
     public void return_location_when_turn_left_from_north() {
-        testCarAction(TURN_LEFT,Direction.NORTH,1,1,Direction.WEST);
+        Car car = initCar(1,1,Direction.NORTH);
+
+        car.turnLeft();
+
+        assertCarPosition(1, 1, Direction.WEST, car);
     }
 
     @Test
     public void return_location_when_turn_left_from_south() {
-        testCarAction(TURN_LEFT,Direction.SOUTH,1,1,Direction.EAST);
+        Car car = initCar(1,1,Direction.SOUTH);
+
+        car.turnLeft();
+
+        assertCarPosition(1, 1, Direction.EAST, car);
     }
 
     @Test
     public void return_location_when_turn_left_from_west() {
-        testCarAction(TURN_LEFT,Direction.WEST,1,1,Direction.SOUTH);
+        Car car = initCar(1,1,Direction.WEST);
+
+        car.turnLeft();
+
+        assertCarPosition(1, 1, Direction.SOUTH, car);
     }
 
     @Test
     public void return_location_when_turn_left_from_east() {
-        testCarAction(TURN_LEFT,Direction.EAST,1,1,Direction.NORTH);
+        Car car = initCar(1,1,Direction.EAST);
+
+        car.turnLeft();
+
+        assertCarPosition(1, 1, Direction.NORTH, car);
     }
 
     @Test
     public void return_location_when_turn_right_from_north() {
-        testCarAction(TURN_RIGHT, Direction.NORTH, 1,1,Direction.EAST);
+        Car car = initCar(1,1,Direction.NORTH);
+
+        car.turnRight();
+
+        assertCarPosition(1, 1, Direction.EAST, car);
     }
 
     @Test
@@ -116,19 +148,6 @@ public class CarTest {
         car.turnRight();
 
         assertCarPosition(1,1, Direction.WEST, car);
-    }
-
-    private void testCarAction(String operation, Direction direction, int expectedX, int expectedY, Direction expectedDirection) {
-        Car car = initCar(1,1,direction);
-        if(operation.equals(MOVE)) {
-            car.move();
-        } else if(operation.equals(TURN_LEFT)) {
-            car.turnLeft();
-        } else if(operation.equals(TURN_RIGHT)) {
-            car.turnRight();
-        }
-
-        assertCarPosition(expectedX, expectedY, expectedDirection, car);
     }
 
     private void assertCarPosition(int expectedX, int expectedY, Direction expectedDirection, Car car) {
