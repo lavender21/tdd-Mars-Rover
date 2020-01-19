@@ -15,11 +15,11 @@ public class Car {
 
     public void move() {
         int STEP = backMode ? -1 : 1;
-        if (isEqualsDirection(Direction.SOUTH)) {
+        if (isEqualDirection(Direction.SOUTH)) {
             coordinate.addY(-STEP);
-        } else if (isEqualsDirection(Direction.WEST)) {
+        } else if (isEqualDirection(Direction.WEST)) {
             coordinate.addX(-STEP);
-        } else if (isEqualsDirection(Direction.EAST)) {
+        } else if (isEqualDirection(Direction.EAST)) {
             coordinate.addX(STEP);
         } else {
             coordinate.addY(STEP);
@@ -42,7 +42,7 @@ public class Car {
         return direction;
     }
 
-    private boolean isEqualsDirection(Direction d) {
+    private boolean isEqualDirection(Direction d) {
         return direction.equals(d);
     }
 
