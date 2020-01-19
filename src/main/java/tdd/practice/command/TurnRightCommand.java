@@ -1,0 +1,14 @@
+package tdd.practice.command;
+
+import tdd.practice.car.Car;
+
+public class TurnRightCommand implements Command {
+    private Car car;
+    public TurnRightCommand(Car car) {
+        this.car = car;
+    }
+
+    public void execute() {
+        car.turnRight();
+    }
+}

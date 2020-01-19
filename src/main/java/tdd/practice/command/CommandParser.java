@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CommandParser {
     public List<String> parse(String input) {
         return Arrays.stream(input.split(" "))
-                .filter(Command::contains)
+                .filter(CommandList::contains)
                 .collect(Collectors.toList());
     }
 }

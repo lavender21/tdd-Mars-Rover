@@ -12,14 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
     4.car 1,1 N cmd L M R -> mock .. -> 0,1 N
  */
 
-public class CarControllerTest {
+public class CarExecutorTest {
     @Test
     public void print_car_location_when_send_cmd_move() {
         Coordinate coordinate = new Coordinate(1,1);
         Car car = new Car(coordinate, Direction.NORTH);
 
-        CarController carController = new CarController();
-        carController.execute(car, "L M R");
+        CarExecutor carExecutor = new CarExecutor(car);
+        carExecutor.execute("L M R");
         assertThat(car.getCoordinate().getX()).isEqualTo(0);
         assertThat(car.getCoordinate().getY()).isEqualTo(1);
         assertThat(car.getDirection()).isEqualTo(Direction.NORTH);
