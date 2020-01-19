@@ -7,12 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public class CarExecutor {
-    private Car car;
-    public CarExecutor(Car car) {
-        this.car = car;
-    }
 
-    public void execute(String cmd) {
+    public static void execute(Car car, String cmd) {
         CommandParser commandParser = new CommandParser();
         List<String> cmdList = commandParser.parse(cmd);
 

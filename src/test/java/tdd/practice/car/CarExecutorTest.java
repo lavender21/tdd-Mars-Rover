@@ -17,9 +17,8 @@ public class CarExecutorTest {
     @Test
     public void execute_car_when_send_cmd_L_M_R() {
         Car car = initCar(1,1, Direction.NORTH);
-        CarExecutor carExecutor = new CarExecutor(car);
 
-        carExecutor.execute("L M R");
+        CarExecutor.execute(car, "L M R");
 
         assertCarLocation(car, 0, 1, Direction.NORTH);
     }
@@ -27,9 +26,8 @@ public class CarExecutorTest {
     @Test
     public void execute_car_back_mode_when_cmd_include_back() {
         Car car = initCar(1,1, Direction.NORTH);
-        CarExecutor carExecutor = new CarExecutor(car);
 
-        carExecutor.execute("B M M R M");
+        CarExecutor.execute(car,"B M M R M");
 
         assertCarLocation(car, 2, -1, Direction.WEST);
     }
