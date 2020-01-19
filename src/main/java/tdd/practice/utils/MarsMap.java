@@ -9,4 +9,8 @@ public class MarsMap {
     public List<Coordinate> getDitches() {
         return ditches;
     }
+
+    public void markDitch(Coordinate coordinate) {
+        ditches.add(coordinate);
+    }
 }
