@@ -89,13 +89,23 @@ public class CarTest {
     }
 
     @Test
-    public void return_location_when_car_toggle_back_mode_and_move() {
+    public void return_location_when_car_enable_back_mode_and_move() {
         Car car = initCar(1,1, Direction.NORTH);
 
         car.toggleBackMode();
         car.move();
 
         assertCarPosition(1,0, Direction.NORTH, car);
+    }
+
+    @Test
+    public void return_location_when_car_enable_back_mode_and_turn_left() {
+        Car car = initCar(1,1, Direction.NORTH);
+
+        car.toggleBackMode();
+        car.turnLeft();
+
+        assertCarPosition(1,1, Direction.EAST, car);
     }
 
     private void testCarAction(String operation, Direction direction, int expectedX, int expectedY, Direction expectedDirection) {

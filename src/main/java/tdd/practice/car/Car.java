@@ -27,7 +27,7 @@ public class Car {
     }
 
     public void turnLeft() {
-        direction = direction.getLeft();
+        direction = backMode ? direction.getRight() : direction.getLeft();
     }
 
     public void turnRight() {
