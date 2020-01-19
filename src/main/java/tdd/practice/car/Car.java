@@ -6,6 +6,7 @@ import tdd.practice.utils.Direction;
 public class Car {
     private Coordinate coordinate;
     private Direction direction;
+    private boolean backMode = false;
 
     public Car(Coordinate coordinate, Direction direction) {
         this.coordinate = coordinate;
@@ -13,7 +14,7 @@ public class Car {
     }
 
     public void move() {
-        int STEP = 1;
+        int STEP = backMode ? -1 : 1;
         if (isEqualsDirection(Direction.SOUTH)) {
             coordinate.addY(-STEP);
         } else if (isEqualsDirection(Direction.WEST)) {
@@ -43,5 +44,9 @@ public class Car {
 
     private boolean isEqualsDirection(Direction d) {
         return direction.equals(d);
+    }
+
+    public void toggleBackMode() {
+        backMode = !backMode;
     }
 }

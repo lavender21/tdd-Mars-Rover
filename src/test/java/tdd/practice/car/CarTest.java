@@ -25,6 +25,9 @@ import static org.assertj.core.api.Assertions.*;
     (1,1) "S" -> "(1,1) W"
     (1,1) "W" -> "(1,1) N"
     (1,1) "E" -> "(1,1) S"
+    5.car.toggleBackMode() car.move()
+    6.car.toggleBackMode() car.turnLeft()
+    7.car.toggleBackMode() car.turnRight()
  */
 
 public class CarTest {
@@ -34,12 +37,9 @@ public class CarTest {
 
     @Test
     public void return_current_location_when_init_a_car() {
-        Coordinate coordinate = new Coordinate(1,1);
-        Car car = new Car(coordinate, Direction.NORTH);
+        Car car = initCar(1,1,Direction.NORTH);
 
-        assertThat(car.getCoordinate().getX()).isEqualTo(1);
-        assertThat(car.getCoordinate().getY()).isEqualTo(1);
-        assertThat(car.getDirection()).isEqualTo(Direction.NORTH);
+        assertCarPosition(1, 1, Direction.NORTH, car);
     }
 
     @Test
@@ -88,9 +88,18 @@ public class CarTest {
         testCarAction(TURN_RIGHT, Direction.NORTH, 1,1,Direction.EAST);
     }
 
+    @Test
+    public void return_location_when_car_toggle_back_mode_and_move() {
+        Car car = initCar(1,1, Direction.NORTH);
+
+        car.toggleBackMode();
+        car.move();
+
+        assertCarPosition(1,0, Direction.NORTH, car);
+    }
+
     private void testCarAction(String operation, Direction direction, int expectedX, int expectedY, Direction expectedDirection) {
-        Coordinate coordinate = new Coordinate(1,1);
-        Car car = new Car(coordinate, direction);
+        Car car = initCar(1,1,direction);
         if(operation.equals(MOVE)) {
             car.move();
         } else if(operation.equals(TURN_LEFT)) {
@@ -99,8 +108,17 @@ public class CarTest {
             car.turnRight();
         }
 
+        assertCarPosition(expectedX, expectedY, expectedDirection, car);
+    }
+
+    private void assertCarPosition(int expectedX, int expectedY, Direction expectedDirection, Car car) {
         assertThat(car.getCoordinate().getX()).isEqualTo(expectedX);
         assertThat(car.getCoordinate().getY()).isEqualTo(expectedY);
         assertThat(car.getDirection()).isEqualTo(expectedDirection);
+    }
+
+    private Car initCar(int x, int y, Direction direction) {
+        Coordinate coordinate = new Coordinate(x, y);
+        return new Car(coordinate, direction);
     }
 }
