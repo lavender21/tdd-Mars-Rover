@@ -2,15 +2,16 @@ package tdd.practice.command;
 
 import tdd.practice.car.Car;
 
-public class MoveCommand implements Command {
+public class BackCommand implements Command {
     private Car car;
-    public static final String NAME = "M";
+    public static final String NAME = "B";
 
-    public MoveCommand(Car car) {
+    public BackCommand(Car car) {
         this.car = car;
     }
 
+    @Override
     public void execute() {
-        car.move();
+
     }
 }
