@@ -1,7 +1,7 @@
 package tdd.practice.utils;
 
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class MarsMapTest {
     @Test
@@ -27,6 +27,15 @@ public class MarsMapTest {
 
         marsMap.markDitch(new Coordinate(1,1));
 
-        assertThat(marsMap.isDitches(new Coordinate(1,1))).isEqualTo(true);
+        assertThat(marsMap.isInDitch(new Coordinate(1,1))).isEqualTo(true);
+    }
+
+    @Test
+    public void return_false_when_coordinate_is_not_mark_as_ditches_in_map() {
+        MarsMap marsMap = new MarsMap();
+
+        marsMap.markDitch(new Coordinate(1,1));
+
+        assertThat(marsMap.isInDitch(new Coordinate(2,2))).isEqualTo(false);
     }
 }

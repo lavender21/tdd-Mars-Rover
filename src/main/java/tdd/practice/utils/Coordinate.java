@@ -24,4 +24,8 @@ public class Coordinate {
     public int getY() {
         return y;
     }
+
+    public boolean equals(Coordinate c) {
+        return x == c.x && y == c.y;
+    }
 }
